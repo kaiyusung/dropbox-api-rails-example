@@ -6,7 +6,7 @@ class DropboxController < ApplicationController
   end
 
   def show
-    consumer      = Dropbox::API::OAuth.consumer(:authorize)
+    consumer = Dropbox::API::OAuth.consumer(:authorize)
     request_token = consumer.get_request_token
     session[:dropbox_oauth_request_token]  = request_token.token
     session[:dropbox_oauth_request_secret] = request_token.secret
@@ -15,7 +15,7 @@ class DropboxController < ApplicationController
   end
 
   def create
-    consumer      = Dropbox::API::OAuth.consumer(:authorize)
+    consumer = Dropbox::API::OAuth.consumer(:authorize)
     request_token = OAuth::RequestToken.new(consumer, session[:dropbox_oauth_request_token], session[:dropbox_oauth_request_secret])
     begin
       access_token = request_token.get_access_token
@@ -29,5 +29,6 @@ class DropboxController < ApplicationController
     redirect_to "/"
   end
 
-end
 
+
+end
