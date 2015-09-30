@@ -11,7 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150929093008) do
+ActiveRecord::Schema.define(version: 20150930075959) do
+
+  create_table "cap_ratios", force: :cascade do |t|
+    t.string   "ticker"
+    t.float    "cap_score1"
+    t.float    "cap_score2"
+    t.float    "cap_score3"
+    t.float    "cap_score4"
+    t.float    "cap_score5"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cash_flows", force: :cascade do |t|
+    t.string   "ticker"
+    t.float    "cash_score1"
+    t.float    "cash_score2"
+    t.float    "cash_score3"
+    t.float    "cash_score4"
+    t.float    "cash_score5"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "dashboards", force: :cascade do |t|
     t.float    "roic_score1"
@@ -22,6 +44,17 @@ ActiveRecord::Schema.define(version: 20150929093008) do
     t.string   "ticker"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "profit_margins", force: :cascade do |t|
+    t.string   "ticker"
+    t.float    "profit_score1"
+    t.float    "profit_score2"
+    t.float    "profit_score3"
+    t.float    "profit_score4"
+    t.float    "profit_score5"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end

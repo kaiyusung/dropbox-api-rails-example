@@ -3,6 +3,7 @@
   <% @number.times do |i|%>
     <tr>
       <td><%= Dashboard.find(i+1).ticker%></td>
+      <td><%= CapRatio.find(i+1).cap_score1%></td>
     </tr>
   <%end%>
 </table>
