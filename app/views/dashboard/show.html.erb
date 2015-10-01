@@ -1,9 +1,37 @@
-<h1>Batmobile Fundamental Investing Model</h1>
+<h1>Totoro Fundamental Investing Model</h1>
   <table style="width:100%">
-  <% @eddies.order(average_score: :desc).each do  |row|%>
+    <td><%= "Ticker"%></td>
+    <td><%= "2010"%></td>
+    <td><%= "2011"%></td>
+    <td><%= "2012"%></td>
+    <td><%= "2013"%></td>
+    <td><%= "2014"%></td>
+    <td><%= "Average Score"%></td>
+    <td><%= "2010 Rank"%></td>
+    <td><%= "2011 Rank"%></td>
+    <td><%= "2012 Rank"%></td>
+    <td><%= "2013 Rank"%></td>
+    <td><%= "2014 Rank"%></td>
+    <td><%= "Average Rank"%></td>
+  <% @eddies.order(average_score: :desc).each do |row|%>
     <tr>
-      <td><%= row.ticker%></td>
-      <td><%= row.average_score%></td>
+      <div class="row">
+        <td><%= row.ticker%></td>
+        <td><%= row.total_score1.round(2)%></td>
+        <td><%= row.total_score2.round(2)%></td>
+        <td><%= row.total_score3.round(2)%></td>
+        <td><%= row.total_score4.round(2)%></td>
+        <td><%= row.total_score5.round(2)%></td>
+        <td><%= row.average_score.round(2)%></td>
+        <td><%= row.rank1%></td>
+        <td><%= row.rank2%></td>
+        <td><%= row.rank3%></td>
+        <td><%= row.rank4%></td>
+        <td><%= row.rank5%></td>
+        <td><%= row.average_rank%></td>
+        <td></td>
+
+      </div class>
     </tr>
   <%end%>
 </table>
