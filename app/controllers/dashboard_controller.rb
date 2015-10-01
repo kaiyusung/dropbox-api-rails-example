@@ -27,6 +27,7 @@ class DashboardController < ApplicationController
     end
 
     def show
+      @totalscore = get_totalscore
     end
 
     @number = Dashboard.count()
@@ -79,7 +80,17 @@ class DashboardController < ApplicationController
       i += 1
     end
 
-    @eddies = TotalScore.all
+    @totalscores = TotalScore.all
   end
+
+  private
+
+  def get_totalscore
+    TotalScore.find(params[:id])
+  end
+
+
+
+
 
 end

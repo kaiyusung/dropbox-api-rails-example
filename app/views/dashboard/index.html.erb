@@ -1,5 +1,6 @@
 <h1>Totoro Fundamental Investing Model</h1>
   <table style="width:100%">
+    <td><%= "Details"%></td>
     <td><%= "Ticker"%></td>
     <td><%= "2010"%></td>
     <td><%= "2011"%></td>
@@ -13,9 +14,10 @@
     <td><%= "2013 Rank"%></td>
     <td><%= "2014 Rank"%></td>
     <td><%= "Average Rank"%></td>
-  <% @eddies.order(average_score: :desc).each do |row|%>
+  <% @totalscores.order(average_score: :desc).each do |row|%>
     <tr>
       <div class="row">
+        <td><%= link_to 'Details', dashboard_path(row)%></td>
         <td><%= row.ticker%></td>
         <td><%= row.total_score1.round(2)%></td>
         <td><%= row.total_score2.round(2)%></td>
