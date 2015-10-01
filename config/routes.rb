@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get "/dropbox/auth",  :controller => "dropbox", :action => "show"
   get "/dropbox/callback",  :controller => "dropbox", :action => "create"
 
-  root 'dashboard#show'
+  root 'dashboard#index'
 end

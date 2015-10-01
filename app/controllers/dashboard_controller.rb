@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
 
-  def show
+  def index
     files = dropbox.ls
     roic = CSV.parse(files[3].download)
     capratio = CSV.parse(files[0].download)
@@ -24,6 +24,9 @@ class DashboardController < ApplicationController
                                         (roic[i][4].to_f + capratio[i][4].to_f + cashflow[i][4].to_f + profitmargin[i][4].to_f) +
                                         (roic[i][5].to_f + capratio[i][5].to_f + cashflow[i][5].to_f + profitmargin[i][5].to_f))/5) })
         end
+    end
+
+    def show
     end
 
     @number = Dashboard.count()
