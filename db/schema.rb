@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150930075959) do
+ActiveRecord::Schema.define(version: 20150930081725) do
 
   create_table "cap_ratios", force: :cascade do |t|
     t.string   "ticker"
@@ -55,6 +55,27 @@ ActiveRecord::Schema.define(version: 20150930075959) do
     t.float    "profit_score5"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "total_scores", force: :cascade do |t|
+    t.string   "ticker"
+    t.float    "total_score1"
+    t.float    "total_score2"
+    t.float    "total_score3"
+    t.float    "total_score4"
+    t.float    "total_score5"
+    t.float    "average_score"
+    t.integer  "rank1"
+    t.integer  "rank2"
+    t.integer  "rank3"
+    t.integer  "rank4"
+    t.integer  "rank5"
+    t.integer  "average_rank"
+    t.float    "pe_ratio"
+    t.float    "price_per_book"
+    t.float    "price"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
 end

@@ -1,9 +1,9 @@
 <h1>Batmobile Fundamental Investing Model</h1>
   <table style="width:100%">
-  <% @number.times do |i|%>
+  <% @eddies.order(average_score: :desc).each do  |row|%>
     <tr>
-      <td><%= Dashboard.find(i+1).ticker%></td>
-      <td><%= CapRatio.find(i+1).cap_score1%></td>
+      <td><%= row.ticker%></td>
+      <td><%= row.average_score%></td>
     </tr>
   <%end%>
 </table>
