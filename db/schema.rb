@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150930081725) do
+ActiveRecord::Schema.define(version: 20151003084016) do
 
   create_table "cap_ratios", force: :cascade do |t|
     t.string   "ticker"
@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(version: 20150930081725) do
   end
 
   create_table "dashboards", force: :cascade do |t|
+    t.string   "ticker"
     t.float    "roic_score1"
     t.float    "roic_score2"
     t.float    "roic_score3"
     t.float    "roic_score4"
     t.float    "roic_score5"
-    t.string   "ticker"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

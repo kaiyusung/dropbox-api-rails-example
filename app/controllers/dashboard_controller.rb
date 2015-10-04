@@ -6,6 +6,7 @@ class DashboardController < ApplicationController
     capratio = CSV.parse(files[0].download)
     cashflow = CSV.parse(files[1].download)
     profitmargin = CSV.parse(files[2].download)
+
     if Dashboard.count() == 0
         roic.length.times do |i|
           Dashboard.create!({"ticker"=>roic[i][0], "roic_score1" =>roic[i][1], "roic_score2" =>roic[i][2], "roic_score3" =>roic[i][3], "roic_score4" =>roic[i][4], "roic_score5" =>roic[i][5]})
@@ -22,15 +23,20 @@ class DashboardController < ApplicationController
                                         (roic[i][2].to_f + capratio[i][2].to_f + cashflow[i][2].to_f + profitmargin[i][2].to_f) +
                                         (roic[i][3].to_f + capratio[i][3].to_f + cashflow[i][3].to_f + profitmargin[i][3].to_f) +
                                         (roic[i][4].to_f + capratio[i][4].to_f + cashflow[i][4].to_f + profitmargin[i][4].to_f) +
-                                        (roic[i][5].to_f + capratio[i][5].to_f + cashflow[i][5].to_f + profitmargin[i][5].to_f))/5) })
+                                        (roic[i][5].to_f + capratio[i][5].to_f + cashflow[i][5].to_f + profitmargin[i][5].to_f))/5)})
         end
     end
-
-    def show
-      @totalscore = get_totalscore
-    end
-
-    @number = Dashboard.count()
+      dum_array = []
+      roic.length.times do |i|
+        dum_array << capratio[i][0]
+      end
+      stock_quote = StockQuote::Stock.quote(dum_array)
+      i = 1
+      stock_quote.each do |row|
+        TotalScore.update(i, :price => row.last_trade_price_only, :pe_ratio => row.pe_ratio, :price_per_book => row.price_book)
+        i += 1
+      end
+      #TotalScore.update(i, :price => stock_quote.last_trade_price_only)
 
     #Update rank 1
     i = 1
@@ -81,9 +87,20 @@ class DashboardController < ApplicationController
     end
 
     @totalscores = TotalScore.all
+
+
+end
+
+  def show
+    @totalscore = get_totalscore
   end
 
+
+
+  @number = Dashboard.count()
+
   private
+
 
   def get_totalscore
     TotalScore.find(params[:id])

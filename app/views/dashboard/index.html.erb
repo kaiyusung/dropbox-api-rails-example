@@ -1,4 +1,7 @@
 <h1>Totoro Fundamental Investing Model</h1>
+  <%def format_value(value)%>
+    <%value ||= 'N/A'%>
+  <%end%>
   <table style="width:100%">
     <td><%= "Details"%></td>
     <td><%= "Ticker"%></td>
@@ -14,6 +17,9 @@
     <td><%= "2013 Rank"%></td>
     <td><%= "2014 Rank"%></td>
     <td><%= "Average Rank"%></td>
+    <td><%= "Price"%></td>
+    <td><%= "P/E Ratio"%></td>
+    <td><%= "Price Per Book"%></td>
   <% @totalscores.order(average_score: :desc).each do |row|%>
     <tr>
       <div class="row">
@@ -31,6 +37,9 @@
         <td><%= row.rank4%></td>
         <td><%= row.rank5%></td>
         <td><%= row.average_rank%></td>
+        <td><%= row.price%></td>
+        <td><%= format_value(row.pe_ratio)%></td>
+        <td><%= format_value(row.price_per_book)%></td>
         <td></td>
 
       </div class>
